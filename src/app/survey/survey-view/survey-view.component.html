@@ -1,0 +1,24 @@
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ survey.surveyName }}</h3>
+    </div>
+    <div class="panel-body" *ngFor="let survey of survey.surveyList">
+      <p>Type: {{ survey.type }}</p>
+      <p>Question: {{ survey.question }}</p>
+      <div *ngIf="survey.type === 'single'">
+            <div *ngFor="let answer of survey.answers">
+                <input type="radio" id="{{ answer }}" name="answer" value="{{ answer }}">
+                <label for="{{ answer }}">{{ answer }}</label><br>
+            </div>
+        </div>
+        <div *ngIf="survey.type === 'multi'">
+            <div *ngFor="let answer of survey.answers">
+                <input type="checkbox" id="{{ answer }}" name="{{ answer }}" value="{{ answer }}">
+                <label for="{{ answer }}">{{ answer }}</label>
+            </div>
+        </div>
+        <div *ngIf="survey.type === 'text'">
+            <p>{{ survey.answers }}</p>
+        </div>
+    </div>
+  </div>

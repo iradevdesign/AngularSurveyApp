@@ -1,0 +1,37 @@
+<h3 style="margin-top: 0px;"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-right:10px;"></span>Survey list:</h3>
+<br>
+<a
+  class="list-group-item clearfix"
+  *ngFor="let survey of surveysList.surveyList; let i = index;">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ survey.surveyName }}</h4>
+  </div>
+  <span class="pull-right">
+        <button class="btn btn-primary" (click)="onEditSurvey(i)"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="margin-right:5px;"></span>Edit</button>
+        <button class="btn btn-default" (click)="onViewSurvey(i)"><span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px;"></span>View</button>
+      </span>
+</a>
+<br>
+<div class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+  <div style="padding: 10px;">
+    <p>A survey contain minimum one question.</p>
+    <p>One question contains: </p>
+    <ul>
+      <li>Type</li>
+      <ul>
+          <li>single</li>
+          <li>multi</li>
+          <li>text</li>
+        </ul>  
+      <li>Question</li>
+      <li>Answer/s</li>
+      <ul>
+          <li>type single/multi have 3 answers separated by comma.</li>
+          <li>type text have just one answer</li>
+        </ul>  
+    </ul>  
+  </div>
+</div>
+<br>
+<button class="btn btn-default" (click)="onCreateSurvey()"><span class="glyphicon glyphicon-new-window" aria-hidden="true" style="margin-right: 5px;"></span>Create Survey</button>

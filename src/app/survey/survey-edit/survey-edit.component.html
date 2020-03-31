@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="surveyForm" (ngSubmit)="onSubmitForm()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="alert alert-info" role="alert" *ngIf="editMode" style="text-align: center;"><span style="font-weight: bold; font-size: 20px;">Edit Survey</span></div>
+                        <div class="alert alert-info" role="alert" *ngIf="!editMode" style="text-align: center;"><span style="font-weight: bold; font-size: 20px;">Create Survey</span></div>
+                        <div *ngIf="editMode">
+                        <label for="surveyName">Survey Name</label>
+                        <input
+                         type="text"
+                         id="surveyName"
+                         formControlName="surveyName"
+                         class="form-control"
+                         disabled
+                         >
+                        </div>
+                        <div *ngIf="!editMode">
+                        <label for="surveyName">Survey Name</label>
+                        <input
+                         type="text"
+                         id="surveyName"
+                         formControlName="surveyName"
+                         class="form-control"
+                         >
+                         <span class="help-block required" *ngIf="!surveyForm.get('surveyName').valid && surveyForm.get('surveyName').touched">Survey Name field is required!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="surveyQuestions">
+                <div 
+                class="row"
+                *ngFor="let surveyCtrl of surveyForm.get('surveyQuestions')['controls']; let i = index"
+                [formGroupName]="i">
+                    <div class="col-xs-12">
+                        <label for="type">Type</label>
+                        <input 
+                        type="text"
+                        class="form-control"
+                        formControlName="type">
+                        <span class="help-block required" *ngIf="!surveyForm.get('surveyQuestions')['controls'][i]['controls'].type.valid && surveyForm.get('surveyQuestions')['controls'][i]['controls'].type.touched">Type field is required!</span>
+                        <small class="form-text text-muted"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="margin-right:2px;"></span>Types available: single, multi, text</small>
+                    </div> 
+                    <div class="col-xs-12">
+                        <label for="question">Question</label>
+                        <input 
+                        type="text"
+                        class="form-control"
+                        formControlName="question">
+                        <span class="help-block required" *ngIf="!surveyForm.get('surveyQuestions')['controls'][i]['controls'].question.valid && surveyForm.get('surveyQuestions')['controls'][i]['controls'].question.touched">Question field is required!</span>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="answers">Answers</label>
+                        <input 
+                        type="text"
+                        class="form-control"
+                        formControlName="answers">
+                        <span class="help-block required" *ngIf="!surveyForm.get('surveyQuestions')['controls'][i]['controls'].answers.valid && surveyForm.get('surveyQuestions')['controls'][i]['controls'].answers.touched">Answers field is required!</span>
+                        <small class="form-text text-muted"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="margin-right:2px;"></span>If type is 'text' there will be just one answer. Otherwise there will be 3 answers separated by comma.</small>
+                    </div>
+                </div>
+            </div>  
+            <br>
+            <div class="row" style="text-align: center;">
+                <div class="col-xs-6">
+                    <button class="btn btn-primary" type="button" (click)="onAddQuestion()"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-right: 5px;"></span>Add Question</button>
+                </div>
+                <div class="col-xs-6">
+                    <button [disabled]="!surveyForm.valid" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true" style="margin-right: 5px;"></span>Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
