@@ -4,10 +4,10 @@
   class="list-group-item clearfix"
   *ngFor="let survey of surveysList.surveyList; let i = index;">
   <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ survey.surveyName }}</h4>
+    <h4 class="list-group-item-heading" style="margin-top: 7px;">{{ survey.surveyName }}</h4>
   </div>
   <span class="pull-right">
-        <button class="btn btn-primary" (click)="onEditSurvey(i)"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="margin-right:5px;"></span>Edit</button>
+        <button class="btn btn-primary" (click)="onEditSurvey(i)" style="margin-right:10px;"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="margin-right:5px;"></span>Edit</button>
         <button class="btn btn-default" (click)="onViewSurvey(i)"><span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px;"></span>View</button>
       </span>
 </a>
