@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
 .glyphicon {
 border-radius: 50%!important;
 -webkit-transition: -webkit-transform .8s ease-in-out!important;
-    transition:         transform .8s ease-in-out!important;
+transition:         transform .8s ease-in-out!important;
 }
 .glyphicon:hover {
 -webkit-transform: rotate(360deg)!important;
